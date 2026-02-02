@@ -1,0 +1,9 @@
+{
+  "name": "Port Moresby National High School Portal",
+  "description": "A professional high school portal featuring public-facing information and comprehensive, role-based dashboards for students and teachers with messaging, community, and performance tracking.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
