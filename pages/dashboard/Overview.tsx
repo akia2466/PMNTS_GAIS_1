@@ -47,7 +47,7 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {teacherStats.map((stat, idx) => (
-            <div key={idx} className={`bg-white p-6 rounded-xl border-l-4 ${stat.color} shadow-sm transition-all hover:shadow-md`}>
+            <div key={idx} className={`bg-white p-6 rounded-xl border-l-4 ${stat.color} shadow-sm transition-all hover:shadow-md cursor-default`}>
               <div className="text-2xl font-bold text-primary mb-1">{stat.value}</div>
               <div className="text-[10px] font-bold text-gray uppercase tracking-widest">{stat.label}</div>
             </div>
@@ -58,11 +58,11 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
           <div className="bg-white rounded-xl shadow-sm p-8">
             <h3 className="text-lg font-bold text-primary uppercase tracking-tight mb-6 flex justify-between items-center">
               Class Performance
-              <button onClick={() => onNavigate('dashboard-performance')} className="text-xs text-accent hover:underline font-bold">View Reports</button>
+              <button onClick={() => onNavigate('dashboard-performance')} className="text-xs text-accent hover:underline font-bold uppercase tracking-tighter">View Reports</button>
             </h3>
             <div className="space-y-4">
               {classPerformance.map((item, idx) => (
-                <div key={idx} className="flex justify-between items-center p-3 bg-light rounded-lg border border-gray-light">
+                <div key={idx} className="flex justify-between items-center p-3 bg-light rounded-lg border border-gray-light hover:border-secondary transition-colors cursor-pointer" onClick={() => onNavigate('dashboard-performance')}>
                   <div className="min-w-0 flex-grow">
                     <span className="text-xs font-bold text-primary block truncate">{item.className}</span>
                     <span className={`text-[9px] font-bold uppercase ${item.status === 'On Track' ? 'text-green-600' : item.status === 'Excelling' ? 'text-blue-600' : 'text-red-500'}`}>{item.status}</span>
@@ -93,11 +93,11 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
           <div className="bg-white rounded-xl shadow-sm p-8">
             <h3 className="text-lg font-bold text-primary uppercase tracking-tight mb-6 flex justify-between items-center">
               Resources
-              <button onClick={() => onNavigate('dashboard-files')} className="text-xs text-accent hover:underline font-bold">All Resources</button>
+              <button onClick={() => onNavigate('dashboard-files')} className="text-xs text-accent hover:underline font-bold uppercase tracking-tighter">All Resources</button>
             </h3>
             <div className="space-y-4">
               {recentFiles.map((file, idx) => (
-                <div key={idx} className="flex items-center space-x-4 p-3 bg-light rounded-lg border border-gray-light group cursor-pointer hover:border-secondary transition-all">
+                <div key={idx} className="flex items-center space-x-4 p-3 bg-light rounded-lg border border-gray-light group cursor-pointer hover:border-secondary transition-all" onClick={() => onNavigate('dashboard-files')}>
                   <div className="w-10 h-10 bg-white rounded flex items-center justify-center text-accent shadow-sm">
                     <i className={`fas ${file.name.includes('pdf') ? 'fa-file-pdf' : 'fa-file-word'}`}></i>
                   </div>
@@ -117,7 +117,7 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
           </div>
           <div className="divide-y divide-gray-light">
             {activity.map((item, idx) => (
-              <div key={idx} className="p-6 flex items-center justify-between hover:bg-light transition-all group">
+              <div key={idx} className="p-6 flex items-center justify-between hover:bg-light transition-all group cursor-pointer">
                 <div className="flex items-center space-x-6 flex-grow">
                   <div className={`w-10 h-10 rounded-full bg-light flex items-center justify-center text-lg ${item.color}`}>
                     <i className={`fas ${item.icon}`}></i>
@@ -175,7 +175,7 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {studentStats.map((stat, idx) => (
-            <div key={idx} className={`bg-white p-6 rounded-xl border-l-4 ${stat.color} shadow-sm transition-all hover:shadow-md`}>
+            <div key={idx} className={`bg-white p-6 rounded-xl border-l-4 ${stat.color} shadow-sm transition-all hover:shadow-md cursor-default`}>
               <div className="text-2xl font-bold text-primary mb-1">{stat.value}</div>
               <div className="text-[10px] font-bold text-gray uppercase tracking-widest">{stat.label}</div>
             </div>
@@ -186,11 +186,11 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
           <div className="bg-white rounded-xl shadow-sm p-8">
             <h3 className="text-lg font-bold text-primary uppercase tracking-tight mb-6 flex justify-between items-center">
               Performance Summary
-              <button onClick={() => onNavigate('dashboard-performance')} className="text-xs text-accent hover:underline font-bold">View All</button>
+              <button onClick={() => onNavigate('dashboard-performance')} className="text-xs text-accent hover:underline font-bold uppercase tracking-tighter">View All</button>
             </h3>
             <div className="space-y-4">
               {performance.map((item, idx) => (
-                <div key={idx} className="flex justify-between items-center p-3 bg-light rounded-lg border border-gray-light">
+                <div key={idx} className="flex justify-between items-center p-3 bg-light rounded-lg border border-gray-light hover:border-accent transition-colors cursor-pointer" onClick={() => onNavigate('dashboard-performance')}>
                   <span className="text-sm font-bold text-primary">{item.subject}</span>
                   <div className="flex items-center space-x-4">
                     <span className="text-sm font-bold text-accent">{item.grade}</span>
@@ -221,11 +221,11 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
           <div className="bg-white rounded-xl shadow-sm p-8">
             <h3 className="text-lg font-bold text-primary uppercase tracking-tight mb-6 flex justify-between items-center">
               My Files
-              <button onClick={() => onNavigate('dashboard-files')} className="text-xs text-accent hover:underline font-bold">View Files</button>
+              <button onClick={() => onNavigate('dashboard-files')} className="text-xs text-accent hover:underline font-bold uppercase tracking-tighter">View Files</button>
             </h3>
             <div className="space-y-4">
               {files.map((file, idx) => (
-                <div key={idx} className="flex items-center space-x-4 p-3 bg-light rounded-lg border border-gray-light group cursor-pointer hover:border-secondary transition-all">
+                <div key={idx} className="flex items-center space-x-4 p-3 bg-light rounded-lg border border-gray-light group cursor-pointer hover:border-secondary transition-all" onClick={() => onNavigate('dashboard-files')}>
                   <div className="w-10 h-10 bg-white rounded flex items-center justify-center text-accent shadow-sm">
                     <i className={`fas ${file.name.includes('pdf') ? 'fa-file-pdf' : 'fa-file-word'}`}></i>
                   </div>
@@ -245,7 +245,7 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
           </div>
           <div className="divide-y divide-gray-light">
             {activity.map((item, idx) => (
-              <div key={idx} className="p-6 flex items-center justify-between hover:bg-light transition-all group">
+              <div key={idx} className="p-6 flex items-center justify-between hover:bg-light transition-all group cursor-pointer">
                 <div className="flex items-center space-x-6 flex-grow">
                   <div className={`w-10 h-10 rounded-full bg-light flex items-center justify-center text-lg ${item.color}`}>
                     <i className={`fas ${item.icon}`}></i>
@@ -331,18 +331,11 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
 
   const metrics = getRoleMetrics();
 
-  const activityLog = [
-    { title: 'Urgent: Board meeting summary uploaded', time: '10 mins ago', icon: 'fa-file-alt', color: 'text-red-500' },
-    { title: 'New curriculum draft shared by Ministry', time: '2 hours ago', icon: 'fa-bullhorn', color: 'text-blue-500' },
-    { title: 'Term 4 fee schedules validated', time: '5 hours ago', icon: 'fa-check-circle', color: 'text-green-500' },
-    { title: 'System maintenance scheduled for Sat 2:00 AM', time: '1 day ago', icon: 'fa-wrench', color: 'text-orange-500' },
-  ];
-
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map((stat, idx) => (
-          <div key={idx} className={`bg-white p-6 rounded-xl border-l-4 ${stat.color} shadow-sm transition-all hover:shadow-md`}>
+          <div key={idx} className={`bg-white p-6 rounded-xl border-l-4 ${stat.color} shadow-sm transition-all hover:shadow-md cursor-default`}>
             <div className="text-2xl font-bold text-primary mb-1">{stat.value}</div>
             <div className="text-[10px] font-bold text-gray uppercase tracking-widest">{stat.label}</div>
           </div>
@@ -395,10 +388,13 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
         </div>
 
         <div className="bg-white rounded-xl shadow-sm p-8">
-          <h3 className="text-lg font-bold text-primary uppercase tracking-tight mb-6">Latest Files</h3>
+          <h3 className="text-lg font-bold text-primary uppercase tracking-tight mb-6 flex justify-between items-center">
+            Latest Files
+            <button onClick={() => onNavigate('dashboard-files')} className="text-xs text-accent hover:underline font-bold uppercase tracking-tighter">View All</button>
+          </h3>
           <div className="space-y-4">
             {[{ name: 'School_Policy_v2.pdf', size: '2.4 MB' }, { name: 'Meeting_Minutes_Oct.docx', size: '1.1 MB' }, { name: 'Budget_Draft_2026.xlsx', size: '420 KB' }].map((file, idx) => (
-              <div key={idx} className="flex items-center space-x-4 p-3 bg-light rounded-lg border border-gray-light group cursor-pointer hover:border-secondary transition-all">
+              <div key={idx} className="flex items-center space-x-4 p-3 bg-light rounded-lg border border-gray-light group cursor-pointer hover:border-secondary transition-all" onClick={() => onNavigate('dashboard-files')}>
                 <div className="w-10 h-10 bg-white rounded flex items-center justify-center text-accent shadow-sm"><i className="fas fa-file-pdf"></i></div>
                 <div className="min-w-0 flex-grow">
                   <h4 className="text-xs font-bold text-primary truncate">{file.name}</h4>
@@ -407,26 +403,6 @@ const Overview: React.FC<OverviewProps> = ({ user, onNavigate }) => {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-light">
-        <div className="p-8 border-b border-gray-light">
-          <h3 className="text-lg font-bold text-primary uppercase tracking-tight">System-Wide Activity Log</h3>
-        </div>
-        <div className="divide-y divide-gray-light">
-          {activityLog.map((item, idx) => (
-            <div key={idx} className="p-6 flex items-center justify-between hover:bg-light transition-all group">
-              <div className="flex items-center space-x-6 flex-grow">
-                <div className={`w-10 h-10 rounded-full bg-light flex items-center justify-center text-lg ${item.color}`}><i className={`fas ${item.icon}`}></i></div>
-                <div>
-                  <h4 className="text-sm font-bold text-primary">{item.title}</h4>
-                  <p className="text-[10px] text-gray uppercase font-bold tracking-wider">{item.time}</p>
-                </div>
-              </div>
-              <button className="p-2 text-gray-300 hover:text-accent transition-colors opacity-0 group-hover:opacity-100"><i className="fas fa-chevron-right"></i></button>
-            </div>
-          ))}
         </div>
       </div>
     </div>
